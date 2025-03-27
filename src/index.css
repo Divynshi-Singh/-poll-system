@@ -1,0 +1,21 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+/* Custom background for body */
+body {
+    background: url('https://static3.zoosk.com/browser-86c22481/touch/en-GB/login-image-aes-v2-desktop.1bed4140b688bfc1e97a.png') center bottom no-repeat #F7F8FB;
+    height: 117vh; 
+    margin: 0;  
+}
+
+
+.light-font, body, button, h1, h2, h3, h4, h5, h6, input, select, textarea {
+    font-family: Euclid, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
