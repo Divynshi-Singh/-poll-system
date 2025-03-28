@@ -1,6 +1,6 @@
 import React from 'react';
 import AppStore from '../assets/footer/appStore.webp';
-import PlayStore from '../assets/footer/playStore.webp';
+import PlayStore from '../assets/footer/googleplay.png';
 import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
 import { TbXboxXFilled } from "react-icons/tb";
 
@@ -8,8 +8,8 @@ const Footer = () => {
     return (
         <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px]">
             <div className="flex justify-center gap-6 pt-5 flex-wrap">
-                <img src={AppStore} className="h-[40px] w-[130px]" alt="App Store" />
-                <img src={PlayStore} className="h-[50px] w-[130px]" alt="Play Store" />
+                <img src={AppStore} className="h-[45px] w-[130px]" alt="App Store" />
+                <img src={PlayStore} className="h-[45px] w-[145px]" alt="Play Store" />
             </div>
             <p className="mb-8 mt-8 text-2xl sm:text-3xl text-center text-gray-600">
                 Over <span className="font-bold text-gray-700">30 million</span> downloads.
