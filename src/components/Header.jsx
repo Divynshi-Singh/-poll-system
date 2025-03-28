@@ -10,9 +10,9 @@ function Header() {
     };
 
     return (
-        <header className="flex justify-between items-center  bg-gray-800 text-white" style={{ padding: '29px 75px' }}>
+        <header className="flex justify-between items-center   text-white  py-7 px-20">
             <div className="text-2xl font-semibold">
-                <Link to="/login/email">
+                <Link to="/">
                     <img
                         src="https://static3.zoosk.com/browser-86c22481/touch/en-GB/assets/images/global/zoosk-heart-logo.svg"
                         alt="Zoosk Logo"
@@ -22,15 +22,15 @@ function Header() {
             </div>
             <div className="flex items-center space-x-6">
                 <Link
-                    to={isSignUp ? "/login/email" : "/login/registration"}
+                    to={isSignUp ? "/" : "/signup"}
                     className="text-lg text-[20px] text-[#374756] pr-[50px] no-underline font-[system-ui] "
                     onClick={handleToggle}
                 >
                     {isSignUp ? "Log In" : "Sign Up"}
                 </Link>
 
-                <div className="md:hidden">
-                    <FaBars className="text-2xl cursor-pointer w-[29px] h-[24px]" />
+                <div className="">
+                    <FaBars className="text-2xl cursor-pointer w-[29px] h-[24px] text-[#374756]" />
                 </div>
             </div>
         </header>
@@ -38,3 +38,4 @@ function Header() {
 }
 
 export default Header;
+

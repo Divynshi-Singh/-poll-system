@@ -3,16 +3,18 @@ import { BrowserRouter as Router, Routes , Route, Navigate } from "react-router-
 import Header from "./components/Header";
 import LoginPage from "./components/LoginPage";
 import SignUpPage from "./components/SignUpPage";
+import Footer from "./components/Footer";
 
 const App = () => {
   return (
     <Router>
       <Header />
       <Routes>
-      <Route path="/" element={<Navigate to="/login/email" />} />
-        <Route path="/login/email" element={<LoginPage/>}/>
-        <Route path="/login/registration" element={<SignUpPage/>} />
+      {/* <Route path="/" element={<Navigate to="/login/email" />} /> */}
+        <Route path="/" element={<LoginPage/>}/>
+        <Route path="/signup" element={<SignUpPage/>} />
       </Routes>
+      <Footer/>
     </Router>
   );
 }
