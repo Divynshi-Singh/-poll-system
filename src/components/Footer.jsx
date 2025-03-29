@@ -1,13 +1,16 @@
 import React from 'react';
 import AppStore from '../assets/footer/appStore.webp';
 import PlayStore from '../assets/footer/googleplay.png';
-import { FaFacebook, FaInstagramSquare } from "react-icons/fa";
-import { TbXboxXFilled } from "react-icons/tb";
+import fbIcon from '../assets/footer/footer-fbIcon.svg';
+import xicon from '../assets/footer/footer-twitterIcon.svg';
+import instaIcon from '../assets/footer/footer-instaIcon.svg';
 
 const Footer = () => {
     return (
-        <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px]">
-            <div className="flex justify-center gap-6 pt-5 flex-wrap">
+       
+
+         <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px] sm:mt-[90px]  md:mt-[50px] lg:mt-[90px]"> 
+            <div className="flex justify-center gap-6 pt-7 flex-wrap text-center">
                 <img src={AppStore} className="h-[45px] w-[130px]" alt="App Store" />
                 <img src={PlayStore} className="h-[45px] w-[145px]" alt="Play Store" />
             </div>
@@ -16,7 +19,8 @@ const Footer = () => {
             </p>
             <div className="border-gray-300 border-[0.1px] mb-6"></div>
             <div className="grid grid-cols-1 gap-8 text-sm text-gray-700 sm:grid-cols-2 md:grid-cols-4 mt-[30px]">
-                <div className="space-y-5">
+                {/* Column 1 */}
+                <div className="space-y-5 text-center lg:text-left">
                     <h3 className="mb-6 font-bold font-sans font-[700]">Zoosk Dating</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">iPhone Dating App</a></li>
@@ -24,7 +28,9 @@ const Footer = () => {
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Start Dating</a></li>
                     </ul>
                 </div>
-                <div className="space-y-5">
+
+                {/* Column 2 */}
+                <div className="space-y-5 text-center lg:text-left">
                     <h3 className="mb-6 font-bold font-sans font-[700]">Dating and Relationship Advice</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Dating Tips</a></li>
@@ -33,7 +39,9 @@ const Footer = () => {
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Single Life</a></li>
                     </ul>
                 </div>
-                <div className="space-y-5">
+
+                {/* Column 3 */}
+                <div className="space-y-5 text-center lg:text-left">
                     <h3 className="mb-6 font-bold font-sans font-[700]">About Zoosk</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">About Us</a></li>
@@ -42,18 +50,43 @@ const Footer = () => {
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Help</a></li>
                     </ul>
                 </div>
-                <div className="space-y-5">
+
+                {/* Column 4 */}
+                <div className="space-y-5 text-center lg:text-left">
                     <h3 className="mb-6 font-bold font-sans font-[700]">Follow Zoosk</h3>
-                    <ul className="flex gap-6 sm:gap-10 text-[#374756] cursor-pointer">
-                        <li><FaFacebook className="text-[32px] sm:text-[40px] hover:text-gray-500" /></li>
-                        <li><FaInstagramSquare className="text-[32px] sm:text-[40px] hover:text-gray-500" /></li>
-                        <li><TbXboxXFilled className="text-[32px] sm:text-[40px] hover:text-gray-500" /></li>
+                    <ul className="flex gap-6 sm:gap-6 text-[#374756] cursor-pointer justify-center lg:justify-start">
+                        {/* Facebook Icon */}
+                        <li>
+                            <img
+                                src={fbIcon}
+                                alt="Facebook"
+                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                            />
+                        </li>
+                        {/* Xbox Icon */}
+                        <li>
+                            <img
+                                src={xicon}
+                                alt="Xbox"
+                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                            />
+                        </li>
+                        {/* Instagram Icon */}
+                        <li>
+                            <img
+                                src={instaIcon}
+                                alt="Instagram"
+                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                            />
+                        </li>
                     </ul>
                 </div>
             </div>
-            <div className="flex flex-col items-center mt-8 space-y-3 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans">
+
+            {/* Bottom Text */}
+            <div className="flex flex-col items-center mt-8 space-y-3 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left">
                 <p className='text-[16px]'>© Copyright 2007-2025 Zoosk, Inc. All rights reserved.</p>
-                <div className="flex flex-wrap text-[16px] justify-center gap-2 sm:gap-4 font-sans font-[500]">
+                <div className="flex flex-wrap text-[16px] justify-center gap-2 sm:gap-4 font-sans font-[500] lg:justify-start">
                     <a href="#" className="hover:text-gray-500">Accessibility</a> |
                     <a href="#" className="hover:text-gray-500">Safety</a> |
                     <a href="#" className="hover:text-gray-500">Terms of Service</a> |
@@ -62,13 +95,15 @@ const Footer = () => {
                     <a href="#" className="hover:text-gray-500">Online Dating Safety Policy</a>
                 </div>
             </div>
-            <p className="mt-8 text-xs text-left text-gray-700  pb-20 leading-[17px] font-sans">
+
+            {/* Legal Notice */}
+            <p className="mt-8 text-xs text-left text-gray-700 pb-20 leading-[17px] font-sans">
                 <strong>ZOOSK DOES NOT CONDUCT CRIMINAL BACKGROUND CHECKS ON THE MEMBERS OR THE SUBSCRIBERS OF THIS WEBSITE.</strong>  <br />
                 <strong>HOWEVER, THE SAFETY AND SECURITY OF OUR MEMBERS IS OUR TOP PRIORITY. BY SIGNING UP TO OUR SERVICES YOU ALSO AGREE TO READ AND FOLLOW OUR </strong>
                 <a href="#" className="text-blue-500 font-sans font-[700]">ONLINE DATING SAFETY TIPS</a>.
             </p>
-
         </div>
     );
 };
+
 export default Footer;

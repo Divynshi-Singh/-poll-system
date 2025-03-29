@@ -49,7 +49,7 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen">
+    <div className="flex justify-center">
       <div className="w-full max-w-[480px] relative mt-[-16px] sm:w-[100%] sm:px-4 lg:w-[480px]" style={{ filter: "drop-shadow(0px 4px 20px rgba(55, 71, 86, .15))" }}>
         <div className="top-0 left-0 w-full">
           <img src="https://static3.zoosk.com/browser-86c22481/touch/en-GB/form-border.548a764ea427d86a828a.svg" alt="Form Border" className="w-full h-auto" />
@@ -86,7 +86,7 @@ const LoginPage = () => {
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-4 top-[65%] transform -translate-y-[50%]"
+                className="absolute right-4 top-[70%] transform -translate-y-[50%]"
               >
                 <FaEye size={21} className="text-[#7f8b96] w-7" style={{ color: iconColor }} /> {/* Dynamic color */}
               </button>
@@ -100,14 +100,14 @@ const LoginPage = () => {
                 <div className="flex items-center justify-between">
                   <input
                     type="checkbox"
-                    className="peer mr-2 w-[28px] h-[28px] border border-solid border-[#919191] rounded-[4px] bg-[#fafafa] outline-[#00838f] mt-[20px] ml-[18px]"
+                    className="peer mr-2 w-[28px] h-[28px] border border-solid border-[#919191] rounded-[4px] bg-[#fafafa] outline-[#00838f] mt-[22px]"
                     onChange={() => setIsHuman(!isHuman)}
                     checked={isHuman}
                   />
-                  <label htmlFor="captcha" className="text-sm text-[#374756] pr-20 pt-4">I am human</label>
-                  <img src={hCaptchaImg} className="h-[43px] mr-[22px] mt-1" />
+                  <label htmlFor="captcha" className="text-[rgb(85,85,85)] pr-20 pt-6 text-[13px] pl-[10px]" >I am human</label>
+                  <img src={hCaptchaImg} className="h-[43px] ml-[30px] mt-1" />
                 </div>
-                <div className="flex justify-center ml-48 mb-2 pt-1">
+                <div className="flex justify-center ml-58 mb-2 ">
                   <a href="#" className="text-sm text-[#374756] text-[8px] hover:underline">Privacy-</a>
                   <a href="#" className="text-sm text-[#374756] text-[8px] hover:underline">Terms</a>
                 </div>
@@ -138,7 +138,7 @@ const LoginPage = () => {
             </button>
 
             <button
-              className="flex w-full h-[45px] items-center justify-center py-2 px-4 rounded-md bg-[white] rounded-[8px] cursor-[pointer]"
+              className="flex w-full h-[45px] items-center justify-center py-2 text-gray-600 px-4 rounded-md bg-[white] rounded-[8px] cursor-[pointer]"
               style={{ border: "1px solid rgba(150, 159, 175, .7)" }}
             >
               <img
@@ -151,11 +151,11 @@ const LoginPage = () => {
           </div>
           <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px]">
             *By selecting "Log in with Facebook" or "Log in with Google", you agree to our{" "}
-            <a href="https://docviewer.zoosk.com/legal-tos-en.html" className="text-[#7f8b96]" target="_blank" rel="noopener noreferrer">
-              Terms of Use
+            <a href="https://docviewer.zoosk.com/legal-tos-en.html" className="text-[#7f8b96] underline" target="_blank" rel="noopener noreferrer">
+              Terms of Use 
             </a>
             (including the mandatory arbitration of disputes) and consent to our{" "}
-            <a href="https://docviewer.zoosk.com/legal-privacy-en.html" className="text-[#7f8b96]" target="_blank" rel="noopener noreferrer">
+            <a href="https://docviewer.zoosk.com/legal-privacy-en.html" className="text-[#7f8b96] underline" target="_blank" rel="noopener noreferrer">
               Privacy Policy
             </a>
           </p>
@@ -165,8 +165,5 @@ const LoginPage = () => {
   );
 };
 export default LoginPage;
-
-
-
 
 
