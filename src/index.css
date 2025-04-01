@@ -1,4 +1,4 @@
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
@@ -9,12 +9,6 @@
     padding:0;
     box-sizing: border-box;
 }
-/* 
-body {
-    background: url('https://static3.zoosk.com/browser-86c22481/touch/en-GB/login-image-aes-v2-desktop.1bed4140b688bfc1e97a.png') center bottom no-repeat #F7F8FB;
-    height: 117vh; 
-    margin: 0;  
-} */
 
 .light-font, body, button, h1, h2, h3, h4, h5, h6, input, select, textarea {
     font-family: 'Euclid', Helvetica, 'Helvetica Neue', Arial, sans-serif;
@@ -33,4 +27,61 @@ body {
         height: 50vh; 
     }
 }
+ */
 
+
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "tailwindcss";
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.light-font, body, button, h1, h2, h3, h4, h5, h6, input, select, textarea {
+    font-family: Euclid, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+
+
+body, button, input, select, textarea {
+    font-family: Euclid, Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+ 
+@media (max-width: 768px) {
+    .custom-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  @media (min-width: 769px) {
+    .custom-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+  
+
+
+  /*
+  @media (min-width: 2560px) {
+    .bg-login-image {
+        height: 49vh; 
+        background-image: url('https://static3.zoosk.com/browser-86c22481/touch/en-GB/login-image-aes-v2-mobile.1bed4140b688bfc1e97a.png');
+    }
+  }
+  
+  
+
+  @media (width: 1440px) {
+    .bg-login-image {
+      height:85vh;
+      background-image: url('https://static3.zoosk.com/browser-86c22481/touch/en-GB/login-image-aes-v2-mobile.1bed4140b688bfc1e97a.png');
+    }
+  } */
+
+
+   /* <div className="bg-login-image  mt-0 h-[121vh] sm:h-[150vh] md:h-[121vh] lg:h-[105vh]"
+ <div className="bg-login-image mt-0 min-h-[100vh] sm:min-h-[120vh] md:min-h-[130vh] lg:min-h-[150vh] xl:min-h-[100vh]"  */

@@ -3,9 +3,7 @@ export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userCredentials, { rejectWithValue }) => {
     try {
-        // https://pollapi.innotechteam.in/login
-      const response = await fetch('http://192.168.68.111/login', {
-    
+      const response = await fetch('http://192.168.68.107:3000/user/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -14,13 +12,15 @@ export const loginUser = createAsyncThunk(
       });
 
       if (!response.ok) {
-        throw new Error('Login failed');
+        const errorData = await response.json();
+        return rejectWithValue(errorData);
       }
 
       const data = await response.json();
-      return data; 
+      console.log(data)
+      return data;
     } catch (error) {
-      return rejectWithValue(error.message);
+      return rejectWithValue({ message: error.message });
     }
   }
 );
@@ -30,6 +30,8 @@ const authSlice = createSlice({
     user: null,
     loading: false,
     error: null,
+    emailError: null,
+    passwordError: null,
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -44,11 +46,15 @@ const authSlice = createSlice({
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        if (action.payload.email) {
+          state.emailError = action.payload.email; 
+        }
+        if (action.payload.password) {
+          state.passwordError = action.payload.password; 
+        }
+        state.error = action.payload.message || 'An error occurred. Please try again.';
       });
   },
 });
-
 export default authSlice.reducer;
-
 

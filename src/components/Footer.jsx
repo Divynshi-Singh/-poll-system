@@ -9,8 +9,8 @@ const Footer = () => {
     return (
        
 
-         <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px] sm:mt-[90px]  md:mt-[50px] lg:mt-[90px]"> 
-            <div className="flex justify-center gap-6 pt-7 flex-wrap text-center">
+         <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px] sm:mt-[0px]  md:mt-[50px] lg:mt-[90px]"> 
+            <div className="flex justify-center gap-6 pt-5 mt-[-30px] sm:pt-5 md:pt-0 flex-wrap text-center">
                 <img src={AppStore} className="h-[45px] w-[130px]" alt="App Store" />
                 <img src={PlayStore} className="h-[45px] w-[145px]" alt="Play Store" />
             </div>
@@ -18,10 +18,12 @@ const Footer = () => {
                 Over <span className="font-bold text-gray-700">30 million</span> downloads.
             </p>
             <div className="border-gray-300 border-[0.1px] mb-6"></div>
-            <div className="grid grid-cols-1 gap-8 text-sm text-gray-700 sm:grid-cols-2 md:grid-cols-4 mt-[30px]">
+           
+            <div className="grid custom-grid gap-8 text-sm text-gray-700 mt-[30px]">
+            {/* <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-4  gap-8 text-sm text-gray-700 mt-[30px]"> */}
                 {/* Column 1 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold font-sans font-[700]">Zoosk Dating</h3>
+                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Zoosk Dating</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">iPhone Dating App</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Android Dating App</a></li>
@@ -31,7 +33,7 @@ const Footer = () => {
 
                 {/* Column 2 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold font-sans font-[700]">Dating and Relationship Advice</h3>
+                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Dating and Relationship Advice</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Dating Tips</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Online Dating Advice</a></li>
@@ -42,7 +44,7 @@ const Footer = () => {
 
                 {/* Column 3 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold font-sans font-[700]">About Zoosk</h3>
+                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">About Zoosk</h3>
                     <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">About Us</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Success Couples</a></li>
@@ -53,7 +55,7 @@ const Footer = () => {
 
                 {/* Column 4 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold font-sans font-[700]">Follow Zoosk</h3>
+                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Follow Zoosk</h3>
                     <ul className="flex gap-6 sm:gap-6 text-[#374756] cursor-pointer justify-center lg:justify-start">
                         {/* Facebook Icon */}
                         <li>
@@ -85,7 +87,7 @@ const Footer = () => {
 
             {/* Bottom Text */}
             <div className="flex flex-col items-center mt-8 space-y-3 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left">
-                <p className='text-[16px]'>© Copyright 2007-2025 Zoosk, Inc. All rights reserved.</p>
+                <p className='text-[16px] '>© Copyright 2007-2025 Zoosk, Inc. All rights reserved.</p>
                 <div className="flex flex-wrap text-[16px] justify-center gap-2 sm:gap-4 font-sans font-[500] lg:justify-start">
                     <a href="#" className="hover:text-gray-500">Accessibility</a> |
                     <a href="#" className="hover:text-gray-500">Safety</a> |
