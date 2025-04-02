@@ -63,25 +63,23 @@ const LoginPage = () => {
       hasError = true;
     }
 
+    if (hasError) return;
+
+
+    // dispatch(loginUser({ email, password }));
+    // Dispatch login user action
     dispatch(loginUser({ email, password }))
       .then(() => {
         setEmail('');
         setPassword('');
         setIsHuman(false);
-        alert('Login successful!');
+
       })
       .catch(() => {
         alert('Login failed. Please try again!');
       });
   };
 
-  // const handleCaptchaChange = () => {
-  //   // Resetting errors when user clicks checkbox again
-  //   setLocalEmailError('');
-  //   setLocalPasswordError('');
-  //   setIsHuman(!isHuman); // Toggle the captcha checkbox state
-  // };
-  
   return (
     <div
       style={{
@@ -182,7 +180,11 @@ const LoginPage = () => {
                 className={`w-full py-[13px] px-0 leading-[26px] rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${isHuman ? 'bg-[#19b7ea] text-white' : 'bg-[#dadada] text-[#999]'} border-0 cursor-pointer text-[20px] mb-[20px]`}
                 disabled={loading || !isHuman || localEmailError || localPasswordError}
               >
-                Log In
+                {loading ? (
+                  <div className="w-6 h-6 border-4 border-t-4 border-blue-500 border-solid rounded-full animate-spin mx-auto"></div> // Tailwind spinner
+                ) : (
+                  'Log In'
+                )}
               </button>
             </form>
             {error &&
@@ -230,5 +232,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-

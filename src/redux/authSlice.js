@@ -20,7 +20,8 @@ export const loginUser = createAsyncThunk(
       console.log(data)
       return data;
     } catch (error) {
-      return rejectWithValue({ message: error.message });
+      return rejectWithValue({ message: error.message || 'Network error. Please try again.' });
+      // return rejectWithValue({ message: error.message });
     }
   }
 );

@@ -7,8 +7,6 @@ import instaIcon from '../assets/footer/footer-instaIcon.svg';
 
 const Footer = () => {
     return (
-       
-
          <div className="w-full bg-white px-4 sm:px-10 lg:px-[70px] sm:mt-[0px]  md:mt-[50px] lg:mt-[90px]"> 
             <div className="flex justify-center gap-6 pt-5 mt-[-30px] sm:pt-5 md:pt-0 flex-wrap text-center">
                 <img src={AppStore} className="h-[45px] w-[130px]" alt="App Store" />
@@ -86,8 +84,9 @@ const Footer = () => {
             </div>
 
             {/* Bottom Text */}
-            <div className="flex flex-col items-center mt-8 space-y-3 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left">
-                <p className='text-[16px] '>© Copyright 2007-2025 Zoosk, Inc. All rights reserved.</p>
+           
+            <div className="flex flex-col items-center mt-8 space-y-3 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left ">
+                <p className='text-[16px]'>© Copyright 2007-2025 Zoosk, Inc. All rights reserved.</p>
                 <div className="flex flex-wrap text-[16px] justify-center gap-2 sm:gap-4 font-sans font-[500] lg:justify-start">
                     <a href="#" className="hover:text-gray-500">Accessibility</a> |
                     <a href="#" className="hover:text-gray-500">Safety</a> |
