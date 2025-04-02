@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import menu from "../assets/footer/menu.svg";
-import HamburgerMenu from "./HamburgerMenu";  // Import HamburgerMenu component
+import HamburgerMenu from "./HamburgerMenu";  //  HamburgerMenu component
 
 function Header() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -59,8 +59,6 @@ function Header() {
           />
         </div>
       </div>
-
-      {/* Insert the HamburgerMenu component here */}
       <HamburgerMenu
         isSidebarOpen={isSidebarOpen}
         toggleSidebar={toggleSidebar}

@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { toast } from 'react-toastify';
 export const loginUser = createAsyncThunk(
   'auth/loginUser',
   async (userCredentials, { rejectWithValue }) => {
@@ -17,7 +18,8 @@ export const loginUser = createAsyncThunk(
       }
 
       const data = await response.json();
-      console.log(data)
+      console.log(data);
+      toast.success("Login successful!");
       return data;
     } catch (error) {
       return rejectWithValue({ message: error.message || 'Network error. Please try again.' });
@@ -58,4 +60,3 @@ const authSlice = createSlice({
   },
 });
 export default authSlice.reducer;
-

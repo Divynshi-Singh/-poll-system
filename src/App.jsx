@@ -1,8 +1,8 @@
 import React from "react";
 import { BrowserRouter as Router, Routes , Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
-import LoginPage from "./components/LoginPage";
-import SignUpPage from "./components/SignUpPage";
+import LoginPage from './pages/LoginPage';
+import SignUpPage from './pages/SignUpPage';
 import Footer from "./components/Footer";
 
 const App = () => {

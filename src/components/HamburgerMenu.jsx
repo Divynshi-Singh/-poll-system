@@ -5,7 +5,8 @@ import PlayStore from "../assets/footer/googleplay.png";
 import fbIcon from "../assets/footer/fb.svg";
 import xicon from "../assets/footer/xicon.svg";
 import instaIcon from "../assets/footer/instaicon.svg";
-
+import { RiArrowDropDownLine } from "react-icons/ri";
+import dropdown from '../assets/footer/dropdown.png'
 const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSelectedLanguage, isDropdownOpen, toggleDropdown, languages }) => {
   return (
     <>
@@ -31,7 +32,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
           >
             <div className="flex items-center justify-between p-0">
               <img
-                src="https://static3.zoosk.com/browser-bf2e74dc/touch/en-US/assets/images/svg/aes-heart-red.svg" 
+                src="https://static3.zoosk.com/browser-bf2e74dc/touch/en-US/assets/images/svg/aes-heart-red.svg"
                 alt="Zoosk Logo"
                 className="w-12 h-9"
               />
@@ -135,24 +136,24 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
                     className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
                   />
                 </a>
-              </div>
-            </div>
+              </div>            </div>
 
             <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between mt-25 text-xs text-center text-gray-800 md:text-sm sm:gap-4 gap-10">
-              <p className="text-[20px]">© 2025 Zoosk</p>
-              <div className="relative">
+              <p className="text-[18px] text-[#374756] font-[500] order-last lg:order-first">© 2025 Zoosk</p>
+              <div className="relative  order-first lg:order-last">
                 <button
                   onClick={toggleDropdown}
-                  className="flex items-center justify-between w-50 p-2 text-gray-700 bg-gray-200 border border-gray-400 rounded-lg"
+                  className="flex items-center justify-between min-w-[202px] h-[40px] px-[25px] py-[8px] text-gray-700 bg-gray-200 border-[1px] border-[#B5BED6] rounded-[8px] text-[16px] font-medium leading-[23px]"
                 >
                   {selectedLanguage}
-                  <span className="ml-2">
-                    <i
-                      className="fa-solid fa-v"
-                      style={{ color: "#858585" }}
-                    ></i>
-                  </span>
+                  <img
+                    src={dropdown}
+                    alt="Dropdown"
+                    className="ml-2 text-[]"
+                    style={{ height: "13px", width: "15px" }}
+                  />
                 </button>
+
                 {isDropdownOpen && (
                   <div className="absolute left-0 z-10 w-40 overflow-y-auto bg-white border border-gray-400 rounded shadow-md bottom-full max-h-60">
                     <ul>
