@@ -1,12 +1,12 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
-import AppStore from "../assets/footer/appStore.webp";
-import PlayStore from "../assets/footer/googleplay.png";
+import AppStore from "../assets/asideBar/appStore.webp";
+import PlayStore from "../assets/asideBar/googleplay.png";
 import fbIcon from "../assets/footer/fb.svg";
 import xicon from "../assets/footer/xicon.svg";
 import instaIcon from "../assets/footer/instaicon.svg";
 import { RiArrowDropDownLine } from "react-icons/ri";
-import dropdown from '../assets/footer/dropdown.png'
+import dropdown from '../assets/asideBar/dropdown.png'
 const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSelectedLanguage, isDropdownOpen, toggleDropdown, languages }) => {
   return (
     <>

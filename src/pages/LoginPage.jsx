@@ -1,3 +1,4 @@
+import 'react-toastify/dist/ReactToastify.css';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser } from '../redux/authSlice';
@@ -5,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { FaFacebook, FaEye } from 'react-icons/fa'; // Only FaEye
 import hCaptchaImg from "../assets/footer/hcapctha.jpg";
 import { toast, ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const LoginPage = () => {
   const dispatch = useDispatch();
