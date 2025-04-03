@@ -1,80 +1,68 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
-import axios from 'axios'
-import { BASE_URL} from "../constant";
+import axios from 'axios';
+import { BASE_URL } from "../constant/constant";
 
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userCredentials, { rejectWithValue }) => {
     try {
-
-      const response = await axios.post(`${BASE_URL}/user/login`,userCredentials,
-        
+      const response = await axios.post(
+        `${BASE_URL}/user/login`,
+        userCredentials,
         {
           headers: {
             "Content-Type": "application/json",
           },
         }
       );
-      toast.success("Login successful!");
-      return response.data;
+      const { token, user } = response.data;
+      localStorage.setItem("token", token);
+      localStorage.setItem("user", JSON.stringify(user));
+      return { token, user };
     } catch (error) {
-      console.error("Error:", error); 
-      if (error.response) {
-        const errorMessage =
-          error.response.data.message || "Login failed. Please try again.";
-        toast.error(errorMessage);
-        return rejectWithValue(error.response.data);
-      } else if (error.request) {
-        const networkError = "Network error. Please try again.";
-        toast.error(networkError);
-        return rejectWithValue({ message: networkError });
-      } else {
-        const unexpectedError =
-          error.message || "An unexpected error occurred.";
-        toast.error(unexpectedError);
-        return rejectWithValue({ message: unexpectedError });
-      }
+      console.error("Error:", error);
+      const errorMessage =
+        error.response?.data?.message || "Something went wrong. Please try again.";
+      toast.error(errorMessage);
+      return rejectWithValue(error.response?.data || { message: errorMessage });
     }
   }
 );
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    user: null,
+    user: JSON.parse(localStorage.getItem("user")) || null,  // Retrieve user from localStorage
+    token: localStorage.getItem("token") || null,           // Retrieve token from localStorage
     loading: false,
     error: null,
-    emailError: null,
-    passwordError: null,
-    
   },
-  reducers: {},
+  reducers: {
+    logout: (state) => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      state.user = null;
+      state.token = null;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loginUser.pending, (state) => {
         state.loading = true;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        const { user, token } = action.payload;
+        state.user = user;
+        state.token = token;
         state.loading = false;
-        state.error = null;  
-           // Clear form data on successful login
-           state.emailError = null;
-           state.passwordError = null;
+        state.error = null;
+        toast.success("Login successful!");
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
-        
-        if (action.payload.email) {
-          state.emailError = action.payload.email;
-        }
-        if (action.payload.password) {
-          state.passwordError = action.payload.password;
-        }
-        state.error =
-          action.payload.message || "An error occurred. Please try again.";
+        state.error = action.payload?.message || "An error occurred. Please try again.";
       });
   },
 });
-
+export const { logout } = authSlice.actions;
 export default authSlice.reducer;

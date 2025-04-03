@@ -16,7 +16,7 @@ export const validateEmail = (email) => {
     return "";
   };
   
-  export const validateForm = (formData) => {
+  export const validateLogin = (formData) => {
     let errors = {};
     errors.email = validateEmail(formData.email);
     errors.password = validatePassword(formData.password);
