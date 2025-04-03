@@ -2,7 +2,6 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import axios from 'axios';
 import { BASE_URL } from "../constant/constant";
-
 export const loginUser = createAsyncThunk(
   "auth/loginUser",
   async (userCredentials, { rejectWithValue }) => {
@@ -16,9 +15,11 @@ export const loginUser = createAsyncThunk(
           },
         }
       );
+      
       const { token, user } = response.data;
       localStorage.setItem("token", token);
       localStorage.setItem("user", JSON.stringify(user));
+
       return { token, user };
     } catch (error) {
       console.error("Error:", error);
@@ -29,6 +30,7 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -64,5 +66,6 @@ const authSlice = createSlice({
       });
   },
 });
-export const { logout } = authSlice.actions;
+
+// export const { logout } = authSlice.actions;
 export default authSlice.reducer;

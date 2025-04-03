@@ -10,14 +10,11 @@ const App = () => {
     <Router>
       <Header />
       <Routes>
-        {/* <Route path="/" element={<Navigate to="/login/email" />} /> */}
         <Route path="/" element={<LoginPage />} />
         <Route path="/signup" element={<SignUpPage />} />
         <Route path="/polls" element={<PollList />} />
       </Routes>
       <Footer />
-
-
     </Router>
   );
 }
