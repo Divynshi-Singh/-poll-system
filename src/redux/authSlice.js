@@ -1,40 +1,52 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { toast } from "react-toastify";
+import axios from 'axios'
+import { BASE_URL} from "../constant";
+
 export const loginUser = createAsyncThunk(
-  'auth/loginUser',
+  "auth/loginUser",
   async (userCredentials, { rejectWithValue }) => {
     try {
-      const response = await fetch('http://192.168.68.107:3000/user/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userCredentials),
-      });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        return rejectWithValue(errorData);
-      }
-
-      const data = await response.json();
-      console.log(data);
+      const response = await axios.post(`${BASE_URL}/user/login`,userCredentials,
+        
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       toast.success("Login successful!");
-      return data;
+      return response.data;
     } catch (error) {
-      return rejectWithValue({ message: error.message || 'Network error. Please try again.' });
-      // return rejectWithValue({ message: error.message });
+      console.error("Error:", error); 
+      if (error.response) {
+        const errorMessage =
+          error.response.data.message || "Login failed. Please try again.";
+        toast.error(errorMessage);
+        return rejectWithValue(error.response.data);
+      } else if (error.request) {
+        const networkError = "Network error. Please try again.";
+        toast.error(networkError);
+        return rejectWithValue({ message: networkError });
+      } else {
+        const unexpectedError =
+          error.message || "An unexpected error occurred.";
+        toast.error(unexpectedError);
+        return rejectWithValue({ message: unexpectedError });
+      }
     }
   }
 );
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState: {
     user: null,
     loading: false,
     error: null,
     emailError: null,
     passwordError: null,
+    
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -45,18 +57,24 @@ const authSlice = createSlice({
       .addCase(loginUser.fulfilled, (state, action) => {
         state.user = action.payload;
         state.loading = false;
-        state.error = null;
+        state.error = null;  
+           // Clear form data on successful login
+           state.emailError = null;
+           state.passwordError = null;
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;
+        
         if (action.payload.email) {
-          state.emailError = action.payload.email; 
+          state.emailError = action.payload.email;
         }
         if (action.payload.password) {
-          state.passwordError = action.payload.password; 
+          state.passwordError = action.payload.password;
         }
-        state.error = action.payload.message || 'An error occurred. Please try again.';
+        state.error =
+          action.payload.message || "An error occurred. Please try again.";
       });
   },
 });
+
 export default authSlice.reducer;
