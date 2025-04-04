@@ -59,7 +59,7 @@ const authSlice = createSlice({
         state.usertoken = usertoken;
         state.loading = false;
         state.error = null;
-        toast.success("Login successful!");
+        // toast.success("Login successful!");
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

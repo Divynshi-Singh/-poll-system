@@ -57,22 +57,51 @@ const LoginPage = () => {
     );
   };
 
+  // useEffect(() => {
+  //   if (user) {
+
+  //     console.log("Login successful, navigating to polls");
+  //     setFormState({
+  //       email: "",
+  //       password: "",
+  //       captchaValidation: false,
+  //       isPasswordVisible: false,
+  //       errors: {
+  //         email: "",
+  //         password: "",     
+  //       }, 
+  //     });
+  //     navigate("/polls"); 
+  //   }
+  // }, [user, navigate]);
+
+
   useEffect(() => {
     if (user) {
-      console.log("Login successful, navigating to polls");
-      setFormState({
-        email: "",
-        password: "",
-        captchaValidation: false,
-        isPasswordVisible: false,
-        errors: {
+      console.log("Login successful, displaying success message and navigating to polls");
+      toast.success("Login successful!")
+      setTimeout(() => {
+        setFormState({
           email: "",
           password: "",
-        },
-      });
-      navigate("/polls"); 
+          captchaValidation: false,
+          isPasswordVisible: false,
+          errors: {
+            email: "",
+            password: "",
+          },
+        });
+        navigate("/polls");
+      }, 1000);
+
+      
     }
   }, [user, navigate]);
+  
+
+
+
+
   return (
     <div
       style={{
