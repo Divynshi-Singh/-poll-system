@@ -6,8 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 import hCaptchaImg from "../assets/footer/hcapctha.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
-import PasswordConfirmation from "../components/PasswordConfirmation"; // Importing PasswordConfirmation component
-
+import PasswordConfirmation from "../components/PasswordConfirmation";
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -21,7 +20,7 @@ const LoginPage = () => {
       email: "",
       password: "",
     },
-    // isPasswordVisible: false,
+  
   });
 
   const handleChange = (e) => {
@@ -40,12 +39,7 @@ const LoginPage = () => {
     });
   };
 
-  const togglePasswordVisibility = () => {
-    setFormState((prevState) => ({
-      ...prevState,
-      isPasswordVisible: !prevState.isPasswordVisible,
-    }));
-  };
+ 
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -133,8 +127,6 @@ const LoginPage = () => {
 
               <PasswordConfirmation
                 password={formState.password}
-                isPasswordVisible={formState.isPasswordVisible}
-                togglePasswordVisibility={togglePasswordVisibility}
                 handleChange={handleChange}
                 error={formState.errors.password}
               />

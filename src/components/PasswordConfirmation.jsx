@@ -1,13 +1,15 @@
-import React from 'react';
+import React ,{ useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 
 const PasswordConfirmation = ({
     password,
-    isPasswordVisible,
-    togglePasswordVisibility,
     handleChange,
-    error 
+    error
 }) => {
+    const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+    const togglePasswordVisibility = () => {
+        setIsPasswordVisible((prev) => !prev);
+    };
     return (
         <div className="mb-4 relative">
             <label
