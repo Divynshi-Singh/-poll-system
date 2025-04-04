@@ -19,8 +19,8 @@ const Footer = () => {
 
             <div className="grid custom-grid gap-8 text-sm text-gray-700 mt-[30px]">
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Zoosk Dating</h3>
-                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
+                    <h3 className="mb-6  text-[16px] font-bold font-sans font-[700]">Zoosk Dating</h3>
+                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-Euclid font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">iPhone Dating App</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Android Dating App</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Start Dating</a></li>
@@ -29,8 +29,8 @@ const Footer = () => {
 
                 {/* Column 2 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Dating and Relationship Advice</h3>
-                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
+                    <h3 className="mb-6  text-[16px] font-bold font-sans font-[700]">Dating and Relationship Advice</h3>
+                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-Euclid font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Dating Tips</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Online Dating Advice</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Relationship Advice</a></li>
@@ -40,8 +40,8 @@ const Footer = () => {
 
                 {/* Column 3 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">About Zoosk</h3>
-                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-sans font-[500]">
+                    <h3 className="mb-6 font-bold text-[16px] font-sans font-[700]">About Zoosk</h3>
+                    <ul className="space-y-6 text-[16px] text-[#374756] leading-[20px] font-Euclid font-[500]">
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">About Us</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Success Couples</a></li>
                         <li className="mb-6"><a href="#" className="hover:text-gray-500">Careers</a></li>
@@ -51,7 +51,7 @@ const Footer = () => {
 
                 {/* Column 4 */}
                 <div className="space-y-5 text-center lg:text-left">
-                    <h3 className="mb-6 font-bold text-[18px] font-sans font-[700]">Follow Zoosk</h3>
+                    <h3 className="mb-6 font-bold font-sans text-[16px] font-[700]">Follow Zoosk</h3>
                     <ul className="flex gap-6 sm:gap-6 text-[#374756] cursor-pointer justify-center lg:justify-start">
                         {/* Facebook Icon */}
                         <li>
@@ -83,7 +83,7 @@ const Footer = () => {
 
             {/* Bottom Text */}
             <div className="flex flex-col sm:flex-col-1 items-center mt-8 space-y-2 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left">
-                <div className="flex flex-wrap text-[16px] justify-center gap-4 sm:gap-4 font-sans font-[500] lg:justify-start order-1 sm:order-2 pl-7 pr-8">
+                <div className="flex flex-wrap text-[16px] justify-center gap-4 sm:gap-4 font-Euclid font-[500] lg:justify-start order-1 sm:order-2 pl-7 pr-8">
                     <a href="#" className="hover:text-gray-500">Accessibility</a> |
                     <a href="#" className="hover:text-gray-500">Safety</a> |
                     <a href="#" className="hover:text-gray-500">Terms of Service</a> |
@@ -91,14 +91,14 @@ const Footer = () => {
                     <a href="#" className="hover:text-gray-500">Imprint</a> |
                     <a href="#" className="hover:text-gray-500">Online Dating Safety Policy</a>
                 </div>
-                <p className="text-[16px] order-2 sm:order-1 mt-12 sm:mt-0 ">
+                <p className="text-[16px] order-2 sm:order-1 mt-12 sm:mt-0 font-Euclid">
                     © Copyright 2007-2025 Zoosk, Inc. All rights reserved.
                 </p>
             </div>
 
 
             {/* Legal Notice */}
-            <p className="mt-8 text-xs text-left text-gray-700 pb-20 leading-[17px] font-sans">
+            <p className="mt-8 text-xs text-left text-gray-700 pb-20 leading-[17px] font-sans ">
                 <strong>ZOOSK DOES NOT CONDUCT CRIMINAL BACKGROUND CHECKS ON THE MEMBERS OR THE SUBSCRIBERS OF THIS WEBSITE.</strong>  <br />
                 <strong>HOWEVER, THE SAFETY AND SECURITY OF OUR MEMBERS IS OUR TOP PRIORITY. BY SIGNING UP TO OUR SERVICES YOU ALSO AGREE TO READ AND FOLLOW OUR </strong>
                 <a href="#" className="text-blue-500 font-sans font-[700]">ONLINE DATING SAFETY TIPS</a>.
@@ -108,3 +108,4 @@ const Footer = () => {
 };
 
 export default Footer;
+

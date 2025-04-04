@@ -1,4 +1,3 @@
-// LoginValidation.js
 export const validateEmail = (email) => {
   if (!email) {
     return "Please enter a valid email in the name@email.com format.";
@@ -18,7 +17,7 @@ export const validatePassword = (password) => {
 };
 
 
-export const validateLogin = (formData) => {
+export const  validateLoginForm = (formData) => {
   let errors = {};
   errors.email = validateEmail(formData.email);
   errors.password = validatePassword(formData.password);

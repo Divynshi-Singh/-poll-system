@@ -44,7 +44,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
               </button>
             </div>
             {/* Sidebar Navigation */}
-            <nav className="flex flex-col pt-15 pl-4 space-y-3 text-base text-[18px] leading-[23px] font-sans font-[500] text-center lg:text-left ">
+            <nav className="flex flex-col pt-15 pl-4 space-y-3 text-base text-[18px] leading-[23px]  font-[500] text-center lg:text-left ">
               <a
                 href="#"
                 className="block text-[#374756] hover:text-gray-400 pb-4"
@@ -68,7 +68,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
               </a>
             </nav>
 
-            <nav className="flex flex-col pt-10 pl-3 space-y-3 text-base font-sans font-[500] text-[18px] leading-[23px] text-center lg:text-left ">
+            <nav className="flex flex-col pt-10 pl-4 space-y-3 text-base  font-[500] text-[18px] leading-[23px] text-center lg:text-left ">
               <a
                 href="#"
                 className="block text-gray-500 hover:text-gray-400 pb-3"
@@ -88,7 +88,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
                 Terms of Use
               </a>
             </nav>
-            <div className="flex flex-col mt-6 mb-10">
+            <div className="flex flex-col mt-6 mb-10 pl-4">
               <div className="flex gap-9 pt-5 flex-wrap lg:gap-8 justify-center lg:justify-start">
                 <img
                   src={AppStore}
@@ -139,7 +139,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
               </div>            </div>
 
             <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between mt-25 text-xs text-center text-gray-800 md:text-sm sm:gap-4 gap-10">
-              <p className="text-[18px] text-[#374756] font-[500] order-last lg:order-first">© 2025 Zoosk</p>
+              <p className="text-[18px] text-[#374756] font-[500] order-last lg:order-first pl-4">© 2025 Zoosk</p>
               <div className="relative  order-first lg:order-last">
                 <button
                   onClick={toggleDropdown}

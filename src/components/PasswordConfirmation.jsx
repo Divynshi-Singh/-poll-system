@@ -3,32 +3,28 @@ import { FaEye } from 'react-icons/fa';
 
 const PasswordConfirmation = ({
     password,
-    confirmPassword,
     isPasswordVisible,
     togglePasswordVisibility,
     handleChange,
-    passwordError,
-    confirmPasswordError
+    error 
 }) => {
     return (
         <div className="mb-4 relative">
             <label
                 htmlFor="password"
-                className="block text-sm text-[#5a6978] mb-[12px] mt-[20px] font-sans text-[15px] font-medium"
+                className="block text-sm text-[#5a6978] mb-[12px] mt-[20px] font-Euclid text-[15px] font-medium"
             >
-                {confirmPassword ? 'Confirm Password' : 'Password'}:
+                Password:
             </label>
             <div className="relative">
                 <input
                     type={isPasswordVisible ? 'text' : 'password'}
-                    id={confirmPassword ? 'confirmPassword' : 'password'}
-                    name={confirmPassword ? 'confirmPassword' : 'password'}
-                    value={confirmPassword || password}
+                    id="password"
+                    name="password"
+                    value={password}
                     onChange={handleChange}
                     placeholder="Password"
-                    className={`w-full h-[44px] border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${passwordError || confirmPasswordError
-                        ? "border-red-500 focus:ring-0"
-                        : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"}`}
+                    className={`w-full h-[44px] border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${error ? "border-red-500 focus:ring-0" : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"}`}
                 />
                 <button
                     type="button"
@@ -44,9 +40,9 @@ const PasswordConfirmation = ({
                     />
                 </button>
             </div>
-            {(passwordError || confirmPasswordError) && (
+            {error && (
                 <p className="bg-[#FF768F] text-[#374756] text-sm leading-[24px] rounded-[6px] mt-[5px] mb-[16px] px-[10px] text-left">
-                    {passwordError || confirmPasswordError}
+                    {error}
                 </p>
             )}
         </div>
@@ -54,3 +50,4 @@ const PasswordConfirmation = ({
 };
 
 export default PasswordConfirmation;
+
