@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { loginUser } from "../redux/authSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { FaFacebook } from "react-icons/fa";
-import hCaptchaImg from "../assets/footer/hcapctha.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
 import PasswordConfirmation from "../components/PasswordConfirmation";
+import BgImg from '../assets/bg/background-img.png';
+import debounce from 'lodash.debounce';
+import Captcha from "../components/CAPTCHA";
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -23,20 +25,23 @@ const LoginPage = () => {
     password: "",
   });
 
+  const [captchaValidation, setCaptchaValidation] = useState(false);
+
+  const debouncedValidate = debounce((fieldName, value) => {
+    const errors = validateLoginForm({ ...formState, [fieldName]: value });
+    setErrorState((prevState) => ({
+      ...prevState,
+      [fieldName]: errors[fieldName] || "",
+    }));
+  }, 1000);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-
-    // Update formState
     setFormState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-
-    // Update errorState
-    setErrorState((prevState) => ({
-      ...prevState,
-      [name]: validateLoginForm({ ...formState, [name]: value })[name],
-    }));
+    debouncedValidate(name, value);
   };
 
   const handleSubmit = (e) => {
@@ -49,6 +54,7 @@ const LoginPage = () => {
       loginUser({ email: formState.email, password: formState.password })
     );
   };
+
   useEffect(() => {
     if (user) {
       setFormState({
@@ -67,12 +73,12 @@ const LoginPage = () => {
   return (
     <div
       style={{
-        background:
-          "url(https://static3.zoosk.com/browser-86c22481/touch/en-GB/login-image-aes-v2-desktop.1bed4140b688bfc1e97a.png) center bottom no-repeat #F7F8FB",
-        margin: "0",
+        background: `url(${BgImg}) center bottom no-repeat #F7F8FB`,
+        margin: '0',
       }}
     >
       <div className="flex justify-center">
+
         <div
           className="w-full max-w-[480px] relative sm:w-[100%] sm:px-4 lg:w-[480px] sm:p-26 lg:mt-[-125px] pb-27 p-2.5"
           style={{ filter: "drop-shadow(0px 4px 20px rgba(55, 71, 86, .15))" }}
@@ -104,8 +110,8 @@ const LoginPage = () => {
                   onChange={handleChange}
                   placeholder="name@email.com"
                   className={`w-full h-[44px] font-sans border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${errorState.email
-                      ? "border-red-500 focus:ring-0"
-                      : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"
+                    ? "border-red-500 focus:ring-0"
+                    : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"
                     }`}
                 />
                 {errorState.email && (
@@ -129,77 +135,19 @@ const LoginPage = () => {
                   Forgot Password?
                 </Link>
               </div>
-
-              {/* CAPTCHA */}
-              <div className="box-border w-[300px] h-auto p-0 m-0 border border-solid rounded-[4px] border-[#e0e0e0] bg-[#fafafa] cursor-pointer block mb-[7px]">
-                <div className="flex flex-col items-center justify-center">
-                  <div className="flex items-center justify-between">
-                    <div
-                      className={`mr-2 mt-5 w-[30px] h-[30px] relative border-2 rounded-[4px] cursor-pointer ${formState.captchaValidation
-                          ? "border-[#215b6e]"
-                          : "border-gray-400"
-                        }`}
-                      onClick={() =>
-                        setFormState((prevState) => ({
-                          ...prevState,
-                          captchaValidation: !prevState.captchaValidation,
-                        }))
-                      }
-                    >
-                      {formState.captchaValidation && (
-                        <svg
-                          className="w-6 h-10 border-green-400 text-green-600 absolute top-0 left-0 right-0 bottom-0 m-auto"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="3"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            d="M5 13l4 4L19 7"
-                          ></path>
-                        </svg>
-                      )}
-                    </div>
-                    <label
-                      htmlFor="captcha"
-                      className="text-[rgb(85,85,85)] pr-20 pt-6 text-[13px] pl-[10px] font-sans"
-                    >
-                      I am human
-                    </label>
-                    <img
-                      src={hCaptchaImg}
-                      className="h-[43px] ml-[30px] mt-1"
-                    />
-                  </div>
-                  <div className="flex justify-center ml-58 mb-2">
-                    <a
-                      href="#"
-                      className="text-sm text-[#374756] text-[8px] hover:underline"
-                    >
-                      Privacy-
-                    </a>
-                    <a
-                      href="#"
-                      className="text-sm text-[#374756] text-[8px] hover:underline"
-                    >
-                      Terms
-                    </a>
-                  </div>
-                </div>
-              </div>
-
+              <Captcha
+                captchaValidation={captchaValidation}
+                setCaptchaValidation={setCaptchaValidation}
+              />
               <button
                 type="submit"
-                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${formState.captchaValidation
-                    ? "bg-[#19b7ea] text-white"
-                    : "bg-[#dadada] text-[#999]"
+                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${captchaValidation
+                  ? "bg-[#19b7ea] text-white"
+                  : "bg-[#dadada] text-[#999]"
                   } border-0 cursor-pointer text-[20px] mb-[20px]`}
                 disabled={
                   loading ||
-                  !formState.captchaValidation ||
+                  !captchaValidation ||
                   errorState.email ||
                   errorState.password
                 }
@@ -218,16 +166,16 @@ const LoginPage = () => {
               <span className="text-[#7f8b96] text-[13px]">Or</span>
               <div className="w-[100px] border border-[#7f8b96]"></div>
             </div>
-            <div className="my-6 flex flex-col items-center justify-center space-x-4">
+            <div className="my-6 flex flex-col items-center justify-center space-y-4">
               <button
-                className="flex w-full h-[45px] cursor-[pointer] items-center justify-center py-2 px-4 rounded-md text-[15px] font-[500] text-[#1b3e85] bg-[white] rounded-[8px] mb-[17px] font-euclidMedium"
+                className="flex w-full h-[45px] cursor-pointer items-center justify-center py-2 px-4 rounded-md text-[15px] font-[500] text-[#1b3e85] bg-[white] rounded-[8px] mb-[17px] font-euclidMedium whitespace-nowrap"
                 style={{ border: "1px solid rgba(150, 159, 175, .7)" }}
               >
                 <FaFacebook className="mr-2 w-[30px] h-[25px] text-[#1b3e85]" />
                 Log in with Facebook*
               </button>
               <button
-                className="flex w-full h-[45px] items-center justify-center py-2 text-[#5a6978] px-4 rounded-md bg-[white] rounded-[8px] cursor-[pointer] font-euclidMedium"
+                className="flex w-full h-[45px] items-center justify-center py-2 px-4 rounded-md bg-[white] rounded-[8px] text-[#5a6978] cursor-pointer font-euclidMedium text-center whitespace-nowrap"
                 style={{ border: "1px solid rgba(150, 159, 175, .7)" }}
               >
                 <img
@@ -238,6 +186,7 @@ const LoginPage = () => {
                 Log in with Google*
               </button>
             </div>
+
 
             <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px] font-eculidLight">
               *By selecting "Log in with Facebook" or "Log in with Google", you

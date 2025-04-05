@@ -1,6 +1,7 @@
 export const validateEmail = (email) => {
   if (!email) {
     return "Please enter a valid email in the name@email.com format.";
+   
   } else if (!/\S+@\S+\.\S+/.test(email)) {
     return "Please enter a valid email in the name@email.com format.";
   }
@@ -22,3 +23,4 @@ export const validateLoginForm = (formData) => {
   errors.password = validatePassword(formData.password);
   return errors;
 };
+
