@@ -7,7 +7,6 @@ import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
 import PasswordConfirmation from "../components/PasswordConfirmation";
 import BgImg from '../assets/bg/background-img.png';
-import debounce from 'lodash.debounce';
 import Captcha from "../components/CAPTCHA";
 
 const LoginPage = () => {
@@ -27,21 +26,12 @@ const LoginPage = () => {
 
   const [captchaValidation, setCaptchaValidation] = useState(false);
 
-  const debouncedValidate = debounce((fieldName, value) => {
-    const errors = validateLoginForm({ ...formState, [fieldName]: value });
-    setErrorState((prevState) => ({
-      ...prevState,
-      [fieldName]: errors[fieldName] || "",
-    }));
-  }, 1000);
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormState((prevState) => ({
       ...prevState,
       [name]: value,
     }));
-    debouncedValidate(name, value);
   };
 
   const handleSubmit = (e) => {
@@ -50,6 +40,7 @@ const LoginPage = () => {
     setErrorState(errors);
 
     if (errors.email || errors.password) return;
+
     dispatch(
       loginUser({ email: formState.email, password: formState.password })
     );
@@ -218,5 +209,4 @@ const LoginPage = () => {
     </div>
   );
 };
-
 export default LoginPage;
