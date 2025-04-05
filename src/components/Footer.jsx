@@ -58,7 +58,7 @@ const Footer = () => {
                             <img
                                 src={fbIcon}
                                 alt="Facebook"
-                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                                className="w-[32px] sm:w-[43px] transition-all duration-300 hover:opacity-80"
                             />
                         </li>
                         {/* Xbox Icon */}
@@ -66,7 +66,7 @@ const Footer = () => {
                             <img
                                 src={xicon}
                                 alt="Xbox"
-                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                                className="w-[32px] sm:w-[43px] transition-all duration-300 hover:opacity-80"
                             />
                         </li>
                         {/* Instagram Icon */}
@@ -74,7 +74,7 @@ const Footer = () => {
                             <img
                                 src={instaIcon}
                                 alt="Instagram"
-                                className="w-[32px] sm:w-[40px] transition-all duration-300 hover:opacity-80"
+                                className="w-[32px] sm:w-[43px] transition-all duration-300 hover:opacity-80"
                             />
                         </li>
                     </ul>
@@ -83,7 +83,7 @@ const Footer = () => {
 
             {/* Bottom Text */}
             <div className="flex flex-col sm:flex-col-1 items-center mt-8 space-y-2 text-[15px] text-center text-[#374756] sm:flex-row sm:justify-between sm:space-y-0 font-sans lg:text-left">
-                <div className="flex flex-wrap text-[16px] justify-center gap-4 sm:gap-4 font-Euclid font-[500] lg:justify-start order-1 sm:order-2 pl-7 pr-8">
+                <div className="flex flex-wrap text-[17px] justify-center gap-4 sm:gap-4 font-Euclid font-[500] lg:justify-start order-1 sm:order-2 pl-7 pr-8">
                     <a href="#" className="hover:text-gray-500">Accessibility</a> |
                     <a href="#" className="hover:text-gray-500">Safety</a> |
                     <a href="#" className="hover:text-gray-500">Terms of Service</a> |

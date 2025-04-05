@@ -1,4 +1,4 @@
-import React ,{ useState } from 'react';
+import React, { useState } from 'react';
 import { FaEye } from 'react-icons/fa';
 
 const PasswordConfirmation = ({

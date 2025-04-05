@@ -29,19 +29,6 @@
    font-style: normal;
  }
 
-
-
-/* 
-
-@font-face {
-  font-family: 'Euclid';
-  src: url('../public/font/Euclid\ Circular\ A\ Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-} */
-
-
-
  body {
-  font-family: 'Euclid'
-}
+   font-family: 'Euclid'
+ }

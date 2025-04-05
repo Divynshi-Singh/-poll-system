@@ -16,11 +16,9 @@ export const loginUser = createAsyncThunk(
           },
         }
       );
-      
       const { usertoken, user } = response.data;
       localStorage.setItem("usertoken", JSON.stringify(usertoken));
       localStorage.setItem("user", JSON.stringify(user));
-
       return { usertoken, user };
     } catch (error) {
       console.error("Error:", error);
@@ -31,7 +29,6 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-
 const authSlice = createSlice({
   name: "auth",
   initialState: {
@@ -59,7 +56,7 @@ const authSlice = createSlice({
         state.usertoken = usertoken;
         state.loading = false;
         state.error = null;
-        // toast.success("Login successful!");
+        toast.success("Login successful!");
       })
       .addCase(loginUser.rejected, (state, action) => {
         state.loading = false;

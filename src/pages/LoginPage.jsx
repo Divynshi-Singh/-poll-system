@@ -7,6 +7,7 @@ import hCaptchaImg from "../assets/footer/hcapctha.jpg";
 import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
 import PasswordConfirmation from "../components/PasswordConfirmation";
+
 const LoginPage = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -16,92 +17,55 @@ const LoginPage = () => {
     email: "",
     password: "",
     captchaValidation: false,
-    errors: {
-      email: "",
-      password: "",
-    },
-  
+    isPasswordVisible: false,
+  });
+
+  const [errorState, setErrorState] = useState({
+    email: "",
+    password: "",
   });
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormState((prevState) => {
-      const updatedState = {
-        ...prevState,
-        [name]: value,
-        errors: {
-          ...prevState.errors,
-          [name]: validateLoginForm({ ...prevState, [name]: value })[name], // Update error for specific field
-        },
-      };
 
-      return updatedState;
-    });
+    // Update formState
+    setFormState((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+
+    // Update errorState
+    setErrorState((prevState) => ({
+      ...prevState,
+      [name]: validateLoginForm({ ...formState, [name]: value })[name], // Only validate the changed field
+    }));
   };
-
- 
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const errors = validateLoginForm(formState);
-    setFormState((prevState) => ({
-      ...prevState,
-      errors,
-    }));
+    setErrorState(errors);
 
     if (errors.email || errors.password) return;
-
-    console.log("Dispatching login action");
     dispatch(
       loginUser({ email: formState.email, password: formState.password })
     );
   };
-
-  // useEffect(() => {
-  //   if (user) {
-
-  //     console.log("Login successful, navigating to polls");
-  //     setFormState({
-  //       email: "",
-  //       password: "",
-  //       captchaValidation: false,
-  //       isPasswordVisible: false,
-  //       errors: {
-  //         email: "",
-  //         password: "",     
-  //       }, 
-  //     });
-  //     navigate("/polls"); 
-  //   }
-  // }, [user, navigate]);
-
-
   useEffect(() => {
     if (user) {
-      console.log("Login successful, displaying success message and navigating to polls");
-      toast.success("Login successful!")
-      setTimeout(() => {
-        setFormState({
-          email: "",
-          password: "",
-          captchaValidation: false,
-          isPasswordVisible: false,
-          errors: {
-            email: "",
-            password: "",
-          },
-        });
-        navigate("/polls");
-      }, 1000);
-
-      
+      setFormState({
+        email: "",
+        password: "",
+        captchaValidation: false,
+        isPasswordVisible: false,
+      });
+      setErrorState({
+        email: "",
+        password: "",
+      });
+      navigate("/polls");
     }
   }, [user, navigate]);
-  
-
-
-
-
   return (
     <div
       style={{
@@ -130,7 +94,7 @@ const LoginPage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm text-[#5a6978] mb-[10px] pt-[40px] leading-[22px]  font-Euclid text-[15px]  font-[400]"
+                  className="block text-sm text-[#5a6978] mb-[10px] pt-[40px] leading-[22px] font-Euclid text-[15px] font-[400]"
                 >
                   Email Address:
                 </label>
@@ -141,15 +105,14 @@ const LoginPage = () => {
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="name@email.com"
-                  className={`w-full h-[44px] font-sans border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${
-                    formState.errors.email
+                  className={`w-full h-[44px] font-sans border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${errorState.email
                       ? "border-red-500 focus:ring-0"
                       : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"
-                  }`}
+                    }`}
                 />
-                {formState.errors.email && (
+                {errorState.email && (
                   <p className="bg-[#FF768F] text-[#374756] text-sm leading-[24px] rounded-[6px] my-[5px] mb-[16px] px-[10px] text-left">
-                    {formState.errors.email}
+                    {errorState.email}
                   </p>
                 )}
               </div>
@@ -157,7 +120,7 @@ const LoginPage = () => {
               <PasswordConfirmation
                 password={formState.password}
                 handleChange={handleChange}
-                error={formState.errors.password}
+                error={errorState.password}
               />
 
               <div className="mb-6 text-center mb-[15px] mt-[19px]">
@@ -168,15 +131,16 @@ const LoginPage = () => {
                   Forgot Password?
                 </Link>
               </div>
+
+              {/* CAPTCHA */}
               <div className="box-border w-[300px] h-auto p-0 m-0 border border-solid rounded-[4px] border-[#e0e0e0] bg-[#fafafa] cursor-pointer block mb-[7px]">
                 <div className="flex flex-col items-center justify-center">
                   <div className="flex items-center justify-between">
                     <div
-                      className={`mr-2 mt-5 w-[30px] h-[30px] relative border-2 rounded-[4px] cursor-pointer ${
-                        formState.captchaValidation
+                      className={`mr-2 mt-5 w-[30px] h-[30px] relative border-2 rounded-[4px] cursor-pointer ${formState.captchaValidation
                           ? "border-[#215b6e]"
                           : "border-gray-400"
-                      }`}
+                        }`}
                       onClick={() =>
                         setFormState((prevState) => ({
                           ...prevState,
@@ -228,18 +192,18 @@ const LoginPage = () => {
                   </div>
                 </div>
               </div>
+
               <button
                 type="submit"
-                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${
-                  formState.captchaValidation
+                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${formState.captchaValidation
                     ? "bg-[#19b7ea] text-white"
                     : "bg-[#dadada] text-[#999]"
-                } border-0 cursor-pointer text-[20px] mb-[20px]`}
+                  } border-0 cursor-pointer text-[20px] mb-[20px]`}
                 disabled={
                   loading ||
                   !formState.captchaValidation ||
-                  formState.errors.email ||
-                  formState.errors.password
+                  errorState.email ||
+                  errorState.password
                 }
               >
                 {loading ? (
@@ -249,6 +213,8 @@ const LoginPage = () => {
                 )}
               </button>
             </form>
+
+            {/* Social login buttons */}
             <div className="flex items-center justify-evenly">
               <div className="border border-[#7f8b96] w-[100px]"></div>
               <span className="text-[#7f8b96] text-[13px]">Or</span>
@@ -274,6 +240,7 @@ const LoginPage = () => {
                 Log in with Google*
               </button>
             </div>
+
             <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px] font-sans">
               *By selecting "Log in with Facebook" or "Log in with Google", you
               agree to our{" "}
@@ -306,4 +273,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-

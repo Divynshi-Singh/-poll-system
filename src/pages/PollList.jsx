@@ -8,11 +8,9 @@ const PollList = () => {
   const dispatch = useDispatch();
 
   const handleBackClick = () => {
-    console.log("Logging out and navigating to login page...");
     dispatch(logout());
     navigate('/');
   };
-
   return (
     <div className="p-4">
       <h1 className="text-3xl font-semibold text-red-300 mb-4">Poll List</h1>
