@@ -16,8 +16,6 @@ const LoginPage = () => {
   const [formState, setFormState] = useState({
     email: "",
     password: "",
-    captchaValidation: false,
-    isPasswordVisible: false,
   });
 
   const [errorState, setErrorState] = useState({
@@ -37,7 +35,7 @@ const LoginPage = () => {
     // Update errorState
     setErrorState((prevState) => ({
       ...prevState,
-      [name]: validateLoginForm({ ...formState, [name]: value })[name], // Only validate the changed field
+      [name]: validateLoginForm({ ...formState, [name]: value })[name],
     }));
   };
 
@@ -94,7 +92,7 @@ const LoginPage = () => {
               <div className="mb-4">
                 <label
                   htmlFor="email"
-                  className="block text-sm text-[#5a6978] mb-[10px] pt-[40px] leading-[22px] font-Euclid text-[15px] font-[400]"
+                  className="block text-sm text-[#5a6978] mb-[10px] pt-[40px] leading-[22px] font-euclidMedium text-[15px] font-[400]"
                 >
                   Email Address:
                 </label>
@@ -222,14 +220,14 @@ const LoginPage = () => {
             </div>
             <div className="my-6 flex flex-col items-center justify-center space-x-4">
               <button
-                className="flex w-full h-[45px] cursor-[pointer] items-center justify-center py-2 px-4 rounded-md text-[15px] font-[500] text-[#1b3e85] bg-[white] rounded-[8px] mb-[17px] "
+                className="flex w-full h-[45px] cursor-[pointer] items-center justify-center py-2 px-4 rounded-md text-[15px] font-[500] text-[#1b3e85] bg-[white] rounded-[8px] mb-[17px] font-euclidMedium"
                 style={{ border: "1px solid rgba(150, 159, 175, .7)" }}
               >
                 <FaFacebook className="mr-2 w-[30px] h-[25px] text-[#1b3e85]" />
                 Log in with Facebook*
               </button>
               <button
-                className="flex w-full h-[45px] items-center justify-center py-2 text-[#5a6978] px-4 rounded-md bg-[white] rounded-[8px] cursor-[pointer] "
+                className="flex w-full h-[45px] items-center justify-center py-2 text-[#5a6978] px-4 rounded-md bg-[white] rounded-[8px] cursor-[pointer] font-euclidMedium"
                 style={{ border: "1px solid rgba(150, 159, 175, .7)" }}
               >
                 <img
@@ -241,7 +239,7 @@ const LoginPage = () => {
               </button>
             </div>
 
-            <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px] font-sans">
+            <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px] font-eculidLight">
               *By selecting "Log in with Facebook" or "Log in with Google", you
               agree to our{" "}
               <a

@@ -111,7 +111,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
                   <img
                     src={fbIcon}
                     alt="Facebook"
-                    className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
+                    className="w-[43px] h-[43px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
                   />
                 </a>
                 <a
@@ -122,7 +122,7 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
                   <img
                     src={xicon}
                     alt="X (formerly Twitter)"
-                    className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
+                    className="w-[43px] h-[43px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
                   />
                 </a>
                 <a
@@ -133,17 +133,17 @@ const HamburgerMenu = ({ isSidebarOpen, toggleSidebar, selectedLanguage, setSele
                   <img
                     src={instaIcon}
                     alt="Instagram"
-                    className="w-[32px] h-[32px] sm:w-[40px] sm:h-[40px] hover:opacity-80"
+                    className="w-[43px] h-[43px] sm:w-[43px] sm:h-[40px] hover:opacity-80"
                   />
                 </a>
               </div>            </div>
 
-            <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between mt-25 text-xs text-center text-gray-800 md:text-sm sm:gap-4 gap-10">
+            <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-between mt-12 text-xs text-center text-gray-800 md:text-sm sm:gap-4 gap-10">
               <p className="text-[18px] text-[#374756] font-[500] order-last lg:order-first pl-4">© 2025 Zoosk</p>
               <div className="relative  order-first lg:order-last">
                 <button
                   onClick={toggleDropdown}
-                  className="flex items-center justify-between min-w-[202px] h-[40px] px-[25px] py-[8px] text-gray-700 bg-gray-200 border-[1px] border-[#B5BED6] rounded-[8px] text-[16px] font-medium leading-[23px]"
+                  className="flex items-center justify-between   min-w-[202px] h-[40px] px-[25px] py-[8px] text-gray-700 bg-gray-200 border-[1px] border-[#B5BED6] rounded-[8px] text-[16px] font-medium leading-[23px] "
                 >
                   {selectedLanguage}
                   <img
