@@ -6,7 +6,7 @@ import { FaFacebook } from "react-icons/fa";
 import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
 import PasswordConfirmation from "../components/PasswordConfirmation";
-import BgImg from '../assets/bg/background-img.png';
+import BgImg from "../assets/bg/background-img.png";
 import Captcha from "../components/CAPTCHA";
 
 const LoginPage = () => {
@@ -25,7 +25,7 @@ const LoginPage = () => {
   });
 
   const [captchaValidation, setCaptchaValidation] = useState(false);
-
+  const [submitted, setSubmitted] = useState(false);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormState((prevState) => ({
@@ -36,14 +36,12 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setSubmitted(true);
     const errors = validateLoginForm(formState);
     setErrorState(errors);
-
-    if (errors.email || errors.password) return;
-
-    dispatch(
-      loginUser({ email: formState.email, password: formState.password })
-    );
+    const hasErrors = Object.values(errors).some((err) => err);
+    if (hasErrors || !captchaValidation) return;
+    dispatch(loginUser(formState));
   };
 
   useEffect(() => {
@@ -65,11 +63,10 @@ const LoginPage = () => {
     <div
       style={{
         background: `url(${BgImg}) center bottom no-repeat #F7F8FB`,
-        margin: '0',
+        margin: "0",
       }}
     >
       <div className="flex justify-center">
-
         <div
           className="w-full max-w-[480px] relative sm:w-[100%] sm:px-4 lg:w-[480px] sm:p-26 lg:mt-[-125px] pb-27 p-2.5"
           style={{ filter: "drop-shadow(0px 4px 20px rgba(55, 71, 86, .15))" }}
@@ -94,18 +91,19 @@ const LoginPage = () => {
                   Email Address:
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   id="email"
                   name="email"
                   value={formState.email}
                   onChange={handleChange}
                   placeholder="name@email.com"
-                  className={`w-full h-[44px] font-sans border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${errorState.email
-                    ? "border-red-500 focus:ring-0"
-                    : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"
-                    }`}
+                  className={`w-full h-[44px] font-sans border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${
+                    submitted && errorState.email
+                      ? "border-red-500 focus:ring-0"
+                      : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"
+                  }`}
                 />
-                {errorState.email && (
+                {submitted && errorState.email && (
                   <p className="bg-[#FF768F] text-[#374756] text-sm leading-[24px] rounded-[6px] my-[5px] mb-[16px] px-[10px] text-left">
                     {errorState.email}
                   </p>
@@ -115,7 +113,8 @@ const LoginPage = () => {
               <PasswordConfirmation
                 password={formState.password}
                 handleChange={handleChange}
-                error={errorState.password}
+                // error={errorState.password}
+                error={submitted ? errorState.password : ""}
               />
 
               <div className="mb-6 text-center mb-[15px] mt-[19px]">
@@ -132,15 +131,16 @@ const LoginPage = () => {
               />
               <button
                 type="submit"
-                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${captchaValidation
-                  ? "bg-[#19b7ea] text-white"
-                  : "bg-[#dadada] text-[#999]"
-                  } border-0 cursor-pointer text-[20px] mb-[20px]`}
+                className={`w-full py-[13px] px-0 leading-[26px] font-sans rounded-[250px] shadow-[0_5.83px_19.83px_rgba(8,46,81,.13)] ${
+                  captchaValidation
+                    ? "bg-[#19b7ea] text-white"
+                    : "bg-[#dadada] text-[#999]"
+                } border-0 cursor-pointer text-[20px] mb-[20px]`}
                 disabled={
-                  loading ||
-                  !captchaValidation ||
-                  errorState.email ||
-                  errorState.password
+                  loading || !captchaValidation
+                  // ||
+                  // errorState.email ||
+                  // errorState.password
                 }
               >
                 {loading ? (
@@ -177,7 +177,6 @@ const LoginPage = () => {
                 Log in with Google*
               </button>
             </div>
-
 
             <p className="text-sm text-left text-[#7f8b96] text-[11px] leading-[20px] pb-[20px] mt-[-10px] font-eculidLight">
               *By selecting "Log in with Facebook" or "Log in with Google", you
