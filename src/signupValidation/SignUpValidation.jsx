@@ -10,6 +10,7 @@ const SignUpValidation = ({ formData, captchaValidation }) => {
         } else if (!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(formData.password)) {
             newErrors.password = "Password must be at least 8 characters long, contain a letter, a number, and a special character.";
         }
+      
         if (formData.password !== formData.confirmPassword) {
             newErrors.confirmPassword = "Passwords do not match";
         }
@@ -21,7 +22,8 @@ const SignUpValidation = ({ formData, captchaValidation }) => {
         return newErrors;
     };
 
-    return { validateForm };
+    return  {validateForm };
 };
 
 export default SignUpValidation;
+

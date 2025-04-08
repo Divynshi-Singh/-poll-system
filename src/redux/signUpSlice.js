@@ -2,14 +2,14 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 import axios from 'axios';
 import { BASE_URL } from "../constant/constant";
+
 export const signUpUser = createAsyncThunk(
-  "auth/signUpUser",
+  "signup/signUpUser",
   async (userDetails, { rejectWithValue }) => {
     try {
       const response = await axios.post(
         `${BASE_URL}/user/register`,
         userDetails,
-
         {
           headers: {
             "Content-Type": "application/json",
@@ -29,22 +29,16 @@ export const signUpUser = createAsyncThunk(
     }
   }
 );
-const authSlice = createSlice({
-  name: "auth",
+const signupSlice = createSlice({
+  name: "signup",
   initialState: {
     user: null,
     usertoken: null,
     loading: false,
     error: null,
+    validationErrors: {}, 
   },
-  reducers: {
-    logout: (state) => {
-      localStorage.removeItem("usertoken");
-      localStorage.removeItem("user");
-      state.user = null;
-      state.usertoken = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(signUpUser.pending, (state) => {
@@ -56,7 +50,7 @@ const authSlice = createSlice({
         state.usertoken = usertoken;
         state.loading = false;
         state.error = null;
-        toast.success("Registration successful!");
+        toast.success("Registration successful!");  
       })
       .addCase(signUpUser.rejected, (state, action) => {
         state.loading = false;
@@ -65,6 +59,4 @@ const authSlice = createSlice({
   },
 });
 
-export const { logout } = authSlice.actions;
-export default authSlice.reducer;
-
+export default signupSlice.reducer;

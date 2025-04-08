@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './authSlice';
-import roleReducer from './roleSlice';  // Import the roleSlice
-
+import roleReducer from './roleSlice';  
+import signupReducer from './signUpSlice';
 const store = configureStore({
   reducer: {
     auth: authReducer,
-    roles: roleReducer,  // Add the roleSlice to the store
+    signup: signupReducer,
+    roles: roleReducer, 
   },
 });
 

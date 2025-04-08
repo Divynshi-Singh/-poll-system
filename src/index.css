@@ -33,11 +33,23 @@
   src: url('../public/font/Euclid\ Circular\ A\ Bold.ttf') format('truetype');
 }
 
+
+
+
+@font-face {
+  font-family: 'EuclidRegular';
+  src: url('../public/font/Euclid\ Circular\ A\ Regular.ttf') format('truetype');
+}
  
 @theme{
   --font-euclidMedium: "EuclidMedium";
-  --font-eculidLight:"EuclidLight";
-  --font-eculidBold:"EuclidBold"
+  --font-euclidLight:"EuclidLight";
+  --font-euclidBold:"EuclidBold";
+  --font-euclidRegular:"EuclidRegular"
  
  }
-
+ @media (min-width: 2560px) {
+  .min-h-screen {
+      min-height: 50vh; /* or any custom value you prefer */
+  }
+}

@@ -43,4 +43,4 @@ const roleSlice = createSlice({
   },
 });
 
- export default roleSlice.reducer;
+export default roleSlice.reducer;

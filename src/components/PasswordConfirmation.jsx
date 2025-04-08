@@ -4,7 +4,7 @@ import { FaEye } from 'react-icons/fa';
 const PasswordConfirmation = ({
     password,
     handleChange,
-    error
+    error,
 }) => {
     const [isPasswordVisible, setIsPasswordVisible] = useState(false);
     const togglePasswordVisibility = () => {
@@ -14,7 +14,7 @@ const PasswordConfirmation = ({
         <div className="mb-4 relative">
             <label
                 htmlFor="password"
-                className="block text-sm text-[#5a6978] mb-[12px] mt-[20px] font-euclidMedium text-[15px] "
+                className=" label block text-sm text-[#5a6978] mb-[12px] mt-[20px] font-euclidMedium text-[15px]"
             >
                 Password:
             </label>
@@ -26,7 +26,7 @@ const PasswordConfirmation = ({
                     value={password}
                     onChange={handleChange}
                     placeholder="Password"
-                    className={`w-full h-[44px] border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${error ? "border-red-500 focus:ring-0" : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"}`}
+                    className={`   w-full h-[44px] border bg-[#e8eaee] shadow-inner px-[20px] py-[10px] text-[17px] leading-[24px] font-medium rounded-[7px] text-[#374756] focus:outline-none ${error ? "border-red-500 focus:ring-0" : "border-transparent focus:ring-1 focus:ring-[#19b7ea]"}`}
                 />
                 <button
                     type="button"
@@ -50,6 +50,5 @@ const PasswordConfirmation = ({
         </div>
     );
 };
-
 export default PasswordConfirmation;
 
