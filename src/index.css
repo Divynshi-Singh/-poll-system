@@ -11,7 +11,6 @@
      grid-template-columns: repeat(4, 1fr);
    }
  }
-
  @font-face {
    font-family: 'EuclidMedium';
    src: url('../public/font/Euclid\ Circular\ A\ Medium.ttf') format('truetype');
@@ -19,22 +18,15 @@
    font-style: normal;
  }
 
-
-
  @font-face {
   font-family: 'EuclidLight';
   src: url('../public/font/Euclid\ Circular\ A\ Light.ttf') format('truetype');
 }
 
-
-
 @font-face {
   font-family: 'EuclidBold';
   src: url('../public/font/Euclid\ Circular\ A\ Bold.ttf') format('truetype');
 }
-
-
-
 
 @font-face {
   font-family: 'EuclidRegular';
@@ -48,8 +40,33 @@
   --font-euclidRegular:"EuclidRegular"
  
  }
- @media (min-width: 2560px) {
+
+
+
+@media (max-width: 1024px) {
+ .sign{
+   max-width: 560px;
+  
+ }
+
+ .login{
+margin-right: -80px;
+ }
+}
+@media (max-width: 1024px) {
   .min-h-screen {
-      min-height: 50vh; /* or any custom value you prefer */
+    min-height: 100vh; 
+  }
+}
+@media (min-width: 2560px) {
+  .min-h-screen {
+    min-height: 50vh;
+  }
+}
+
+
+@media (max-width: 1022px) {
+  .min-h-screen {
+    min-height: 130vh;
   }
 }

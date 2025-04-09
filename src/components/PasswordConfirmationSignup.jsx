@@ -25,12 +25,12 @@ const PasswordConfirmationSignup = ({ password, confirmPassword, handleChange, e
                         value={password}
                         onChange={handleChange}
                         placeholder="Password"
-                        className="w-full px-3 py-[10px] mt-1 border border-gray-400 rounded placeholder:text-[#374756] bg-[#f8f9fa] font-euclidRegular"
+                        className="w-full px-3  pl-5 py-3 mt-1 border border-gray-400 rounded placeholder:text-[#374756] bg-[#f8f9fa] font-euclidRegular focus:outline-none text-[15px]"
                     />
                     <button
                         type="button"
                         onClick={togglePasswordVisibility}
-                        className="absolute right-4 flex items-center justify-center top-1/2 transform -translate-y-1/2"
+                        className="absolute right-4 flex items-center justify-center top-[55%] transform -translate-y-1/2"
                     >
                         <FaEye size={22} className={`${isPasswordVisible ? 'text-[#19b7ea]' : 'text-[#7f8b96]'}`} />
                     </button>
@@ -39,7 +39,7 @@ const PasswordConfirmationSignup = ({ password, confirmPassword, handleChange, e
             </div>
 
             {/* Confirm Password Input */}
-            <div className="mb-4 relative">
+            <div className="mb-5 relative">
                 <label className="block text-[#374756] font-euclidBold">Confirm Password</label>
                 <div className="relative flex items-center">
                     <input
@@ -48,12 +48,12 @@ const PasswordConfirmationSignup = ({ password, confirmPassword, handleChange, e
                         value={confirmPassword}
                         onChange={handleChange}
                         placeholder="Confirm password"
-                        className="w-full px-3 py-[10px] mt-1 border border-gray-400 rounded placeholder:text-[#374756] bg-[#f8f9fa] font-euclidRegular"
+                        className="w-full px-3 pl-5 py-3 mt-1 border border-gray-400 rounded placeholder:text-[#374756] bg-[#f8f9fa] font-euclidRegular focus:outline-none text-[15px]"
                     />
                     <button
                         type="button"
                         onClick={toggleConfirmPasswordVisibility}
-                        className="absolute right-4 flex items-center justify-center top-1/2 transform -translate-y-1/2"
+                        className="absolute right-4 flex items-center justify-center top-[55%] transform -translate-y-1/2"
                     >
                         <FaEye size={22} className={`${isConfirmPasswordVisible ? 'text-[#19b7ea]' : 'text-[#7f8b96]'}`} />
                     </button>
@@ -65,3 +65,6 @@ const PasswordConfirmationSignup = ({ password, confirmPassword, handleChange, e
 };
 
 export default PasswordConfirmationSignup;
+
+
+

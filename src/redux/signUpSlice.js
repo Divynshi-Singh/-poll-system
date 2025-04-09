@@ -22,9 +22,15 @@ export const signUpUser = createAsyncThunk(
       return { usertoken, user };
     } catch (error) {
       console.error("Error:", error);
-      const errorMessage =
-        error.response?.data?.message || "Something went wrong. Please try again.";
+      let errorMessage = "Something went wrong. Please try again.";
+      if (error.response?.status === 500) {
+        errorMessage = "Email is already in use.";
+      } else {
+        errorMessage = error.response?.data?.message || errorMessage;
+      }
+
       toast.error(errorMessage);
+
       return rejectWithValue(error.response?.data || { message: errorMessage });
     }
   }
@@ -36,13 +42,17 @@ const signupSlice = createSlice({
     usertoken: null,
     loading: false,
     error: null,
-    validationErrors: {}, 
+    validationErrors: {},
+    success: false
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(signUpUser.pending, (state) => {
         state.loading = true;
+        state.error = null;
+        state.success = false;
+
       })
       .addCase(signUpUser.fulfilled, (state, action) => {
         const { user, usertoken } = action.payload;
@@ -50,13 +60,14 @@ const signupSlice = createSlice({
         state.usertoken = usertoken;
         state.loading = false;
         state.error = null;
-        toast.success("Registration successful!");  
+        state.success = true;
+        toast.success("Registration successful!");
       })
       .addCase(signUpUser.rejected, (state, action) => {
         state.loading = false;
+        state.success = false;
         state.error = action.payload?.message || "An error occurred. Please try again.";
       });
   },
 });
-
 export default signupSlice.reducer;
