@@ -11,7 +11,6 @@
      grid-template-columns: repeat(4, 1fr);
    }
  }
-
  @font-face {
    font-family: 'EuclidMedium';
    src: url('../public/font/Euclid\ Circular\ A\ Medium.ttf') format('truetype');
@@ -19,25 +18,55 @@
    font-style: normal;
  }
 
-
-
  @font-face {
   font-family: 'EuclidLight';
   src: url('../public/font/Euclid\ Circular\ A\ Light.ttf') format('truetype');
 }
-
-
 
 @font-face {
   font-family: 'EuclidBold';
   src: url('../public/font/Euclid\ Circular\ A\ Bold.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'EuclidRegular';
+  src: url('../public/font/Euclid\ Circular\ A\ Regular.ttf') format('truetype');
+}
  
 @theme{
   --font-euclidMedium: "EuclidMedium";
-  --font-eculidLight:"EuclidLight";
-  --font-eculidBold:"EuclidBold"
+  --font-euclidLight:"EuclidLight";
+  --font-euclidBold:"EuclidBold";
+  --font-euclidRegular:"EuclidRegular"
  
  }
 
+
+
+@media (max-width: 1024px) {
+ .sign{
+   max-width: 560px;
+  
+ }
+
+ .login{
+margin-right: -80px;
+ }
+}
+@media (max-width: 1024px) {
+  .min-h-screen {
+    min-height: 100vh; 
+  }
+}
+@media (min-width: 2560px) {
+  .min-h-screen {
+    min-height: 50vh;
+  }
+}
+
+
+@media (max-width: 1022px) {
+  .min-h-screen {
+    min-height: 130vh;
+  }
+}

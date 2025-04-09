@@ -7,7 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { validateLoginForm } from "../formValidation/Validation";
 import PasswordConfirmation from "../components/PasswordConfirmation";
 import BgImg from "../assets/bg/background-img.png";
-import Captcha from "../components/CAPTCHA";
+import Captcha from "../components/Captcha";
 
 const LoginPage = () => {
   const dispatch = useDispatch();

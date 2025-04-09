@@ -3,13 +3,13 @@ import { toast } from "react-toastify";
 import axios from 'axios';
 import { BASE_URL } from "../constant/constant";
 
-export const loginUser = createAsyncThunk(
-  "auth/loginUser",
-  async (userCredentials, { rejectWithValue }) => {
+export const signUpUser = createAsyncThunk(
+  "signup/signUpUser",
+  async (userDetails, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        `${BASE_URL}/user/login`,
-        userCredentials,
+        `${BASE_URL}/user/register`,
+        userDetails,
         {
           headers: {
             "Content-Type": "application/json",
@@ -22,48 +22,52 @@ export const loginUser = createAsyncThunk(
       return { usertoken, user };
     } catch (error) {
       console.error("Error:", error);
-      const errorMessage =
-        error.response?.data?.message || "Something went wrong. Please try again.";
+      let errorMessage = "Something went wrong. Please try again.";
+      if (error.response?.status === 500) {
+        errorMessage = "Email is already in use.";
+      } else {
+        errorMessage = error.response?.data?.message || errorMessage;
+      }
+
       toast.error(errorMessage);
+
       return rejectWithValue(error.response?.data || { message: errorMessage });
     }
   }
 );
-const authSlice = createSlice({
-  name: "auth",
+const signupSlice = createSlice({
+  name: "signup",
   initialState: {
     user: null,
     usertoken: null,
     loading: false,
     error: null,
+    validationErrors: {},
+    success: false
   },
-  reducers: {
-    logout: (state) => {
-      localStorage.removeItem("usertoken");
-      localStorage.removeItem("user");
-      state.user = null;
-      state.usertoken = null;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(loginUser.pending, (state) => {
+      .addCase(signUpUser.pending, (state) => {
         state.loading = true;
+        state.error = null;
+        state.success = false;
+
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(signUpUser.fulfilled, (state, action) => {
         const { user, usertoken } = action.payload;
         state.user = user;
         state.usertoken = usertoken;
         state.loading = false;
         state.error = null;
-        toast.success("Login successful!");
+        state.success = true;
+        toast.success("Registration successful!");
       })
-      .addCase(loginUser.rejected, (state, action) => {
+      .addCase(signUpUser.rejected, (state, action) => {
         state.loading = false;
+        state.success = false;
         state.error = action.payload?.message || "An error occurred. Please try again.";
-        state.authError = action.payload?.message || "An error occurred. Please try again."; 
       });
   },
 });
-export const { logout } = authSlice.actions;
-export default authSlice.reducer;
+export default signupSlice.reducer;
